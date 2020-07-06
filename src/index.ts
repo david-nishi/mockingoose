@@ -101,7 +101,8 @@ const mockedReturn = async function(cb) {
 
   let mock =
     mockingoose.__mocks[modelName] && mockingoose.__mocks[modelName][op];
-
+  console.log(mock)
+  
   let err = null;
 
   if (mock instanceof Error) {
@@ -110,6 +111,8 @@ const mockedReturn = async function(cb) {
 
   if (typeof mock === 'function') {
     mock = await mock(this);
+    console.log('updated')
+    console.log(mock)
   }
 
   if (!mock && op === 'save') {
